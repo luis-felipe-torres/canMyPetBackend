@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      CanMyPetEatRelation.belongsTo(models.Food, {
-        foreignKey: "id",
-        targetKey: "idFood",
-      });
       CanMyPetEatRelation.belongsTo(models.Pet, {
-        foreignKey: "id",
-        targetKey: "idPet",
+        foreignKey: "idPet",
+        targetKey: "id",
+      });
+      CanMyPetEatRelation.belongsTo(models.Food, {
+        foreignKey: "idFood",
+        targetKey: "id",
       });
     }
   }

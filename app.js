@@ -5,7 +5,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index.router");
-const typeFoodsRouter = require("./routes/typeFoods.router");
+const typeFoodRouter = require("./routes/typeFoods.router");
+const petRouter = require("./routes/pets.router");
+const foodRouter = require("./routes/foods.router");
+const canMyPetEatRelationRouter = require("./routes/canmypeteatrelation.router");
 
 const app = express();
 
@@ -20,7 +23,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/typeFoods", typeFoodsRouter);
+app.use("/typeFood", typeFoodRouter);
+app.use("/pet", petRouter);
+app.use("/food", foodRouter);
+app.use("/canmypeteatrelation", canMyPetEatRelationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

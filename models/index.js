@@ -8,17 +8,16 @@ const process = require("process");
 const basename = path.basename(__filename);
 const db = {};
 
-/*let sequelize = new Sequelize(
+let sequelize = new Sequelize(
   process.env.DATABASE,
   process.env.USERNAMEDATABASE,
   process.env.PASSWORDDATABASE,
   {
     host: process.env.HOST,
+    port: process.env.PORT,
     dialect: process.env.DIALECT,
   }
-);*/
-
-let sequelize = new Sequelize(process.env.STRINGCONNECTION);
+);
 
 sequelize
   .authenticate()

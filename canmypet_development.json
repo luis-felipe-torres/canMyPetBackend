@@ -1,0 +1,37 @@
+[
+{"type":"header","version":"5.1.1deb5ubuntu1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"canmypet_development"},
+{"type":"table","name":"CanMyPetEatRelations","database":"canmypet_development","data":
+[
+{"id":"1","idPet":"1","idFood":"1","isAllowed":"0","description":"Además de una intoxicación, su ingesta puede ocasionar insuficiencia renal aguda","createdAt":"2024-08-14 14:53:27","updatedAt":"2024-08-16 06:14:39"},
+{"id":"2","idPet":"1","idFood":"5","isAllowed":"1","description":"Son un excelente vegetal que ayuda al correcto tránsito intestinal de nuestro perro gracias a su alto contenido en fibra. Asimismo, es un vegetal rico en vitaminas A,B,C,E y F.","createdAt":"2024-08-15 10:29:07","updatedAt":"2024-08-15 10:29:07"}
+]
+}
+,{"type":"table","name":"Foods","database":"canmypet_development","data":
+[
+{"id":"1","name":"Uvas","image":"https:\/\/5aldia.cl\/wp-content\/uploads\/2018\/04\/beneficios-de-las-uvas-cover-696x435.jpg","description":"De un color espectacular, forma muy caracteristica ","idTypeFood":"1","createdAt":"2024-08-14 14:35:59","updatedAt":"2024-08-14 14:35:59"},
+{"id":"5","name":"Espinaca","image":"https:\/\/www.conasi.eu\/blog\/wp-content\/uploads\/2023\/07\/recetas-con-espinacas-d.jpg","description":"La espinaca es una planta anual, dioica, de la familia de las amarantáceas, cultivada como verdura por sus hojas comestibles, grandes y de color verde muy oscuro.","idTypeFood":"1","createdAt":"2024-08-15 10:27:07","updatedAt":"2024-08-15 10:27:07"}
+]
+}
+,{"type":"table","name":"Pets","database":"canmypet_development","data":
+[
+{"id":"1","name":"Perro","image":"https:\/\/static.fundacion-affinity.org\/cdn\/farfuture\/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE\/mtime:1643275542\/sites\/default\/files\/los-10-sonidos-principales-del-perro.jpg","description":"Vienen en diferentes razas y tamaños","createdAt":"2024-08-14 14:33:54","updatedAt":"2024-08-14 14:33:54"},
+{"id":"2","name":"Gato","image":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcRF1IwK6-SxM83UpFVY6WtUZxXx-phss_gAUfdKbkTfau6VWVkt","description":"El gato doméstico​​ llamado más comúnmente gato, y de forma coloquial minino, ​ michino, ​ y algunos nombres más","createdAt":"2024-08-15 10:23:01","updatedAt":"2024-08-15 10:23:01"},
+{"id":"3","name":"Conejo","image":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcS-edTEJjOarKBoy4TK9LkJDLMm39rVHRjy5FKjHgdk4w-RyK01","description":"El conejo común o conejo europeo es una especie de mamífero lagomorfo de la familia Leporidae, y el único miembro actual del género Oryctolagus.","createdAt":"2024-08-15 10:24:00","updatedAt":"2024-08-15 10:24:00"},
+{"id":"4","name":"Caballo","image":"https:\/\/concepto.de\/wp-content\/uploads\/2021\/07\/caballos-e1626738224231.jpg","description":"El caballo es un mamífero perisodáctilo domesticado de la familia de los équidos. Es un herbívoro de gran porte, con cuello largo y arqueado poblado por largas crines.​​","createdAt":"2024-08-15 10:24:48","updatedAt":"2024-08-15 10:24:48"}
+]
+}
+,{"type":"table","name":"SequelizeMeta","database":"canmypet_development","data":
+[
+{"name":"20240809083053-create-pet.js"},
+{"name":"20240809084332-create-type-food.js"},
+{"name":"20240809084448-create-food.js"},
+{"name":"20240809084719-create-can-my-pet-eat-relation.js"}
+]
+}
+,{"type":"table","name":"TypeFoods","database":"canmypet_development","data":
+[
+{"id":"1","name":"Verduras","createdAt":"2024-08-14 14:33:39","updatedAt":"2024-08-14 14:33:39"}
+]
+}
+]

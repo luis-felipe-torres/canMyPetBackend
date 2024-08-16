@@ -1,10 +1,17 @@
-const { where } = require("sequelize");
-const { CanMyPetEatRelation } = require("../models");
+const { where, Model } = require("sequelize");
+const { CanMyPetEatRelation, Food, TypeFood } = require("../models");
 
 class CanMyPetEatRelationRepository {
   async findAll() {
     try {
-      return await CanMyPetEatRelation.findAll();
+      return await CanMyPetEatRelation.findAll({
+        include: [
+          {
+            model: Food,
+            include: TypeFood,
+          },
+        ],
+      });
     } catch (error) {
       throw new Error(
         "Error fetching all CanMyPetEatRelation records: " + error.message

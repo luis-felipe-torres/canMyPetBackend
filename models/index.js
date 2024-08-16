@@ -8,7 +8,7 @@ const process = require("process");
 const basename = path.basename(__filename);
 const db = {};
 
-let sequelize = new Sequelize(
+/*let sequelize = new Sequelize(
   process.env.DATABASE,
   process.env.USERNAMEDATABASE,
   process.env.PASSWORDDATABASE,
@@ -16,7 +16,9 @@ let sequelize = new Sequelize(
     host: process.env.HOST,
     dialect: process.env.DIALECT,
   }
-);
+);*/
+
+let sequelize = new Sequelize(process.env.STRINGCONNECTION);
 
 sequelize
   .authenticate()

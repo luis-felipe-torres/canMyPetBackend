@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       idPet: DataTypes.INTEGER,
       idFood: DataTypes.INTEGER,
-      can: DataTypes.BOOLEAN,
+      isAllowed: DataTypes.BOOLEAN,
       description: DataTypes.STRING,
     },
     {

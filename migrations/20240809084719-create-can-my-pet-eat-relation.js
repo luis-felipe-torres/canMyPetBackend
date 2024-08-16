@@ -27,11 +27,11 @@ module.exports = {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      can: {
+      isAllowed: {
         type: Sequelize.BOOLEAN,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,

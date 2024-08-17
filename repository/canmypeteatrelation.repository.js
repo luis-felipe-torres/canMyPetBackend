@@ -21,7 +21,14 @@ class CanMyPetEatRelationRepository {
 
   async findById(id) {
     try {
-      const canMyPetEatRelation = await CanMyPetEatRelation.findByPk(id);
+      const canMyPetEatRelation = await CanMyPetEatRelation.findByPk(id, {
+        include: [
+          {
+            model: Food,
+            include: TypeFood,
+          },
+        ],
+      });
       if (!canMyPetEatRelation) {
         throw new Error(`CanMyPetEatRelation with id ${id} not found`);
       }
@@ -39,6 +46,12 @@ class CanMyPetEatRelationRepository {
         where: {
           idPet: IdPet,
         },
+        include: [
+          {
+            model: Food,
+            include: TypeFood,
+          },
+        ],
       });
       if (!canMyPetEatRelation || canMyPetEatRelation.length === 0) {
         throw new Error(`CanMyPetEatRelation with idPet ${IdPet} not found`);
@@ -57,6 +70,12 @@ class CanMyPetEatRelationRepository {
         where: {
           idFood: IdFood,
         },
+        include: [
+          {
+            model: Food,
+            include: TypeFood,
+          },
+        ],
       });
       if (!canMyPetEatRelation || canMyPetEatRelation.length === 0) {
         throw new Error(`CanMyPetEatRelation with idFood ${IdFood} not found`);

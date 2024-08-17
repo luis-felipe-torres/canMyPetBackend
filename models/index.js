@@ -9,12 +9,13 @@ const basename = path.basename(__filename);
 const db = {};
 
 let sequelize = new Sequelize(
-  process.env.DATABASE,
+  process.env.NAMEDATABASE,
   process.env.USERNAMEDATABASE,
   process.env.PASSWORDDATABASE,
   {
-    host: process.env.HOST,
-    dialect: process.env.DIALECT,
+    host: process.env.HOSTDATABASE,
+    dialect: process.env.DIALECTDATABASE,
+    port: process.env.PORTDATABASE,
   }
 );
 

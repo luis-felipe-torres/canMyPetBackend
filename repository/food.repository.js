@@ -1,10 +1,16 @@
 const { where } = require("sequelize");
-const { Food } = require("../models");
+const { Food, TypeFood } = require("../models");
 
 class FoodRepository {
   async findAll() {
     try {
-      return await Food.findAll();
+      return await Food.findAll({
+        include: [
+          {
+            model: TypeFood,
+          },
+        ],
+      });
     } catch (error) {
       throw new Error("Error fetching all Food records: " + error.message);
     }
@@ -12,7 +18,13 @@ class FoodRepository {
 
   async findById(id) {
     try {
-      const food = await Food.findByPk(id);
+      const food = await Food.findByPk(id, {
+        include: [
+          {
+            model: TypeFood,
+          },
+        ],
+      });
       if (!food) {
         throw new Error(`Food with id ${id} not found`);
       }
@@ -28,6 +40,11 @@ class FoodRepository {
         where: {
           idTypeFood: IdTypeFood,
         },
+        include: [
+          {
+            model: TypeFood,
+          },
+        ],
       });
       if (!food || food.length === 0) {
         throw new Error(`Food with idTypeFood ${IdTypeFood} not found`);

@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Luisfelipe16",
+    "database": "canmypet_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "canmypet_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "avnadmin",
+    "password": "AVNS_L-qXH1huSxaIgdBxbMr",
+    "database": "defaultdb",
+    "host": "canmypetbackend-canmypetbackend.i.aivencloud.com",
+    "dialect": "mysql",
+    "port": 24125
+  }
+}

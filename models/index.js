@@ -14,8 +14,8 @@ let sequelize = new Sequelize(
   process.env.PASSWORDDATABASE,
   {
     host: process.env.HOSTDATABASE,
-    port: process.env.PORTDATABASE,
     dialect: process.env.DIALECTDATABASE,
+    port: process.env.PORTDATABASE,
   }
 );
 

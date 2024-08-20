@@ -1,4 +1,4 @@
-const canMyPetEatRelationRepository = require("../repository/canmypeteatrelation.repository");
+import canMyPetEatRelationRepository from "../repository/canmypeteatrelation.repository.js";
 
 class CanMyPetEatRelationController {
   async getAllCanMyPetEatRelations(req, res, next) {
@@ -73,4 +73,4 @@ class CanMyPetEatRelationController {
   }
 }
 
-module.exports = new CanMyPetEatRelationController();
+export default new CanMyPetEatRelationController();

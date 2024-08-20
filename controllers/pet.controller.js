@@ -1,4 +1,4 @@
-const petRepository = require("../repository/pet.repository");
+import petRepository from "../repository/pet.repository.js";
 
 class PetController {
   async getAllPets(req, res, next) {
@@ -47,4 +47,4 @@ class PetController {
   }
 }
 
-module.exports = new PetController();
+export default new PetController();

@@ -1,4 +1,5 @@
-const { TypeFood } = require("../models");
+import db from "../models/index.js";
+const { TypeFood } = db;
 
 class TypeFoodRepository {
   async findAll() {
@@ -54,4 +55,4 @@ class TypeFoodRepository {
   }
 }
 
-module.exports = new TypeFoodRepository();
+export default new TypeFoodRepository();

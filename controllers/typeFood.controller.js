@@ -1,4 +1,4 @@
-const typeFoodRepository = require("../repository/typeFood.repository");
+import typeFoodRepository from "../repository/typeFood.repository.js";
 
 class TypeFoodController {
   async getAllTypeFoods(req, res, next) {
@@ -50,4 +50,4 @@ class TypeFoodController {
   }
 }
 
-module.exports = new TypeFoodController();
+export default new TypeFoodController();

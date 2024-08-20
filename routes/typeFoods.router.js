@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const typeFoodController = require("../controllers/typeFood.controller");
+import typeFoodController from "../controllers/typeFood.controller.js";
 
 router.get("/readAll", typeFoodController.getAllTypeFoods);
 router.get("/readById/:id", typeFoodController.getTypeFoodById);
@@ -9,4 +9,4 @@ router.post("/create", typeFoodController.insertTypeFood);
 router.delete("/delete/:id", typeFoodController.deleteTypeFood);
 router.put("/update/:id", typeFoodController.updateTypeFood);
 
-module.exports = router;
+export default router;

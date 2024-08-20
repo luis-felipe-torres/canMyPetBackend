@@ -1,10 +1,15 @@
 "use strict";
 
-require("dotenv").config();
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
-const process = require("process");
+import "dotenv/config";
+import fs from "fs";
+import path from "path";
+import Sequelize from "sequelize";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const basename = path.basename(__filename);
 const db = {};
 
@@ -28,30 +33,32 @@ sequelize
     console.error("Unable to connect to the database ", error);
   });
 
-fs.readdirSync(__dirname)
-  .filter((file) => {
+async function initializeModels() {
+  const files = fs.readdirSync(__dirname).filter((file) => {
     return (
       file.indexOf(".") !== 0 &&
       file !== basename &&
       file.slice(-3) === ".js" &&
       file.indexOf(".test.js") === -1
     );
-  })
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
-    db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+  for (const file of files) {
+    const model = await import(path.join(__dirname, file));
+    const modelInstance = model.default(sequelize, Sequelize.DataTypes);
+    db[modelInstance.name] = modelInstance;
   }
-});
+
+  Object.keys(db).forEach((modelName) => {
+    if (db[modelName].associate) {
+      db[modelName].associate(db);
+    }
+  });
+}
+
+await initializeModels();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

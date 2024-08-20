@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const foodController = require("../controllers/food.contoller");
+import foodController from "../controllers/food.contoller.js";
 
 router.get("/readAll", foodController.getAllFoods);
 router.get("/readById/:id", foodController.getFoodById);
@@ -10,4 +10,4 @@ router.post("/create", foodController.insertFood);
 router.delete("/delete/:id", foodController.deleteFood);
 router.put("/update/:id", foodController.updateFood);
 
-module.exports = router;
+export default router;

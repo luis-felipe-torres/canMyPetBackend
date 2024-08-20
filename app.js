@@ -1,15 +1,20 @@
-const createError = require("http-errors");
-const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const cors = require("cors");
+import createError from "http-errors";
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import cors from "cors";
 
-const indexRouter = require("./routes/index.router");
-const typeFoodRouter = require("./routes/typeFoods.router");
-const petRouter = require("./routes/pets.router");
-const foodRouter = require("./routes/foods.router");
-const canMyPetEatRelationRouter = require("./routes/canmypeteatrelation.router");
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+import indexRouter from "./routes/index.router.js";
+import typeFoodRouter from "./routes/typeFoods.router.js";
+import petRouter from "./routes/pets.router.js";
+import foodRouter from "./routes/foods.router.js";
+import canMyPetEatRelationRouter from "./routes/canmypeteatrelation.router.js";
 
 const app = express();
 
@@ -46,4 +51,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+export default app;

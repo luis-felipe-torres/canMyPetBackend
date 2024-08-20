@@ -1,5 +1,5 @@
-const { where } = require("sequelize");
-const { Food, TypeFood } = require("../models");
+import db from "../models/index.js";
+const { Food, TypeFood } = db;
 
 class FoodRepository {
   async findAll() {
@@ -88,4 +88,4 @@ class FoodRepository {
   }
 }
 
-module.exports = new FoodRepository();
+export default new FoodRepository();

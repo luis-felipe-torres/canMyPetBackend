@@ -1,4 +1,5 @@
-const { Pet } = require("../models");
+import db from "../models/index.js";
+const { Pet } = db;
 
 class PetRepository {
   async findAll() {
@@ -11,27 +12,27 @@ class PetRepository {
 
   async findById(id) {
     try {
-      const typeFood = await Pet.findByPk(id);
-      if (!typeFood) {
+      const pet = await Pet.findByPk(id);
+      if (!pet) {
         throw new Error(`Pet with id ${id} not found`);
       }
-      return typeFood;
+      return pet;
     } catch (error) {
       throw new Error("Error fetching Pet by id: " + error.message);
     }
   }
 
-  async create(typeFoodData) {
+  async create(petData) {
     try {
-      return await Pet.create(typeFoodData);
+      return await Pet.create(petData);
     } catch (error) {
       throw new Error("Error creating Pet record: " + error.message);
     }
   }
 
-  async update(id, typeFoodData) {
+  async update(id, petData) {
     try {
-      const [updated] = await Pet.update(typeFoodData, { where: { id } });
+      const [updated] = await Pet.update(petData, { where: { id } });
       if (updated === 0) {
         throw new Error(`Pet with id ${id} not found`);
       }
@@ -54,4 +55,4 @@ class PetRepository {
   }
 }
 
-module.exports = new PetRepository();
+export default new PetRepository();

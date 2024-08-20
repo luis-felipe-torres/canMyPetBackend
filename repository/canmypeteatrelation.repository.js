@@ -1,5 +1,5 @@
-const { where, Model } = require("sequelize");
-const { CanMyPetEatRelation, Food, TypeFood } = require("../models");
+import db from "../models/index.js";
+const { CanMyPetEatRelation, Food, TypeFood } = db;
 
 class CanMyPetEatRelationRepository {
   async findAll() {
@@ -132,4 +132,4 @@ class CanMyPetEatRelationRepository {
   }
 }
 
-module.exports = new CanMyPetEatRelationRepository();
+export default new CanMyPetEatRelationRepository();

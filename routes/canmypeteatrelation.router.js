@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const canMyPetEatRelationController = require("../controllers/canMyPetEatRelation.controller");
+import canMyPetEatRelationController from "../controllers/canMyPetEatRelation.controller.js";
 
 router.get(
   "/readAll",
@@ -29,4 +29,4 @@ router.put(
   canMyPetEatRelationController.updateCanMyPetEatRelation
 );
 
-module.exports = router;
+export default router;

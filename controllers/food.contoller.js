@@ -1,4 +1,4 @@
-const foodRepository = require("../repository/food.repository");
+import foodRepository from "../repository/food.repository.js";
 
 class FoodController {
   async getAllFoods(req, res, next) {
@@ -56,4 +56,4 @@ class FoodController {
   }
 }
 
-module.exports = new FoodController();
+export default new FoodController();

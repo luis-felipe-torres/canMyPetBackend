@@ -29,6 +29,13 @@ class PetRepository {
       throw new Error("Error creating Pet record: " + error.message);
     }
   }
+  async createBulk(petDataArray) {
+    try {
+      return await Pet.bulkCreate(petDataArray);
+    } catch (error) {
+      throw new Error("Error creating Pet record: " + error.message);
+    }
+  }
 
   async update(id, petData) {
     try {

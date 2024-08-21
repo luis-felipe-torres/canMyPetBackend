@@ -20,6 +20,11 @@ router.get(
   canMyPetEatRelationController.getCanMyPetEatRelationByIdFood
 );
 router.post("/create", canMyPetEatRelationController.insertCanMyPetEatRelation);
+router.post(
+  "/createMany",
+  canMyPetEatRelationController.insertCanMyPetEatRelations
+);
+
 router.delete(
   "/delete/:id",
   canMyPetEatRelationController.deleteCanMyPetEatRelation

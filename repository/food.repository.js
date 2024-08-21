@@ -63,6 +63,14 @@ class FoodRepository {
     }
   }
 
+  async createBulk(foodData) {
+    try {
+      return await Food.bulkCreate(foodData);
+    } catch (error) {
+      throw new Error("Error creating Food record: " + error.message);
+    }
+  }
+
   async update(id, foodData) {
     try {
       const [updated] = await Food.update(foodData, { where: { id } });

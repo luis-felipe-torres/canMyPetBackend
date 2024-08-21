@@ -98,6 +98,16 @@ class CanMyPetEatRelationRepository {
     }
   }
 
+  async createBulk(canMyPetEatRelationData) {
+    try {
+      return await CanMyPetEatRelation.bulkCreate(canMyPetEatRelationData);
+    } catch (error) {
+      throw new Error(
+        "Error creating CanMyPetEatRelation record: " + error.message
+      );
+    }
+  }
+
   async update(id, canMyPetEatRelationData) {
     try {
       const [updated] = await CanMyPetEatRelation.update(

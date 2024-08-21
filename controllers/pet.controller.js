@@ -28,6 +28,15 @@ class PetController {
     }
   }
 
+  async insertPets(req, res, next) {
+    try {
+      const newPet = await petRepository.createBulk(req.body);
+      res.status(201).json(newPet);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   async updatePet(req, res, next) {
     try {
       const updatedPet = await petRepository.update(req.params.id, req.body);

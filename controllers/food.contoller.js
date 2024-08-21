@@ -37,6 +37,15 @@ class FoodController {
     }
   }
 
+  async insertFoods(req, res, next) {
+    try {
+      const newFood = await foodRepository.createBulk(req.body);
+      res.status(201).json(newFood);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   async updateFood(req, res, next) {
     try {
       const updatedFood = await foodRepository.update(req.params.id, req.body);

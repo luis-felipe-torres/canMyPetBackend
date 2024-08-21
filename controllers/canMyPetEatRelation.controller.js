@@ -52,6 +52,15 @@ class CanMyPetEatRelationController {
       res.status(500).json({ message: error.message });
     }
   }
+  async insertCanMyPetEatRelations(req, res, next) {
+    try {
+      const newCanMyPetEatRelation =
+        await canMyPetEatRelationRepository.createBulk(req.body);
+      res.status(201).json(newCanMyPetEatRelation);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 
   async updateCanMyPetEatRelation(req, res, next) {
     try {

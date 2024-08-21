@@ -1,0 +1,694 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CanMyPetBackend",
+    "description": "API documentation generated from Postman collection to describe all endpoint of CanMyPet Backend \n All the relation present in the backend are: \nPet, Food, TypeFood, CanMyPetEatRelation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "Local Server"
+    },
+    {
+      "url": "https://www.main-bvxea6i-ijcljekxckv4u.eu-5.platformsh.site/",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/typeFood/readAll": {
+      "get": {
+        "summary": "getAll",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "TypeFoods not found"
+          }
+        }
+      }
+    },
+    "/typeFood/readById/{id}": {
+      "get": {
+        "summary": "Get TypeFood by ID",
+        "description": "Retrieves a specific TypeFood based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the TypeFood to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "TypeFood not found"
+          }
+        }
+      }
+    },
+
+    "/typeFood/create": {
+      "post": {
+        "summary": "Create TypeFood",
+        "description": "Creates a new TypeFood with the provided name.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the TypeFood",
+                    "example": "Dry Food"
+                  }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/typeFood/delete/{id}": {
+      "delete": {
+        "summary": "Delete typeFood by the id",
+        "description": "Search an specific typeFood based in their id, and delete this entry of the database",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the TypeFood to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "TypeFood not found"
+          }
+        }
+      }
+    },
+    "/typeFood/update/{id}": {
+      "put": {
+        "summary": "Update typeFood by the id",
+        "description": "Search an specific typeFood based in their id, and update this entry of the database with the entries sended in the body",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the TypeFood to delete"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the TypeFood",
+                    "example": "Dry Food"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "TypeFood not found"
+          }
+        }
+      }
+    },
+    "/pet/readAll": {
+      "get": {
+        "summary": "Get all Pets",
+        "description": "Retrieves all pets in the database.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Pets not found"
+          }
+        }
+      }
+    },
+    "/pet/readById/{id}": {
+      "get": {
+        "summary": "Get Pet by ID",
+        "description": "Retrieves a specific Pet based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Pet to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+    },
+    "/pet/create": {
+      "post": {
+        "summary": "Create Pet",
+        "description": "Creates a new Pet with the provided details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the Pet",
+                    "example": "Buddy"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image URL of the Pet",
+                    "example": "https://example.com/pet.jpg"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the Pet",
+                    "example": "A friendly dog"
+                  }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/pet/delete/{id}": {
+      "delete": {
+        "summary": "Delete Pet by ID",
+        "description": "Deletes a specific Pet based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Pet to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+    },
+    "/pet/update/{id}": {
+      "put": {
+        "summary": "Update Pet by ID",
+        "description": "Updates the details of a specific Pet based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Pet to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the Pet",
+                    "example": "Buddy"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image URL of the Pet",
+                    "example": "https://example.com/pet.jpg"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the Pet",
+                    "example": "A friendly dog"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+    },
+
+    "/food/readAll": {
+      "get": {
+        "summary": "Get all Foods",
+        "description": "Retrieves all foods in the database.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Foods not found"
+          }
+        }
+      }
+    },
+    "/food/readById/{id}": {
+      "get": {
+        "summary": "Get Food by ID",
+        "description": "Retrieves a specific Food based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Food to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Food not found"
+          }
+        }
+      }
+    },
+    "/food/readByIdTypeFood/{idTypeFood}": {
+      "get": {
+        "summary": "Get Foods by TypeFood ID",
+        "description": "Retrieves all Foods associated with a specific TypeFood ID.",
+        "parameters": [
+          {
+            "name": "idTypeFood",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the TypeFood to retrieve Foods for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Foods not found"
+          }
+        }
+      }
+    },
+    "/food/create": {
+      "post": {
+        "summary": "Create Food",
+        "description": "Creates a new Food with the provided details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the Food",
+                    "example": "Carrot"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image URL of the Food",
+                    "example": "https://example.com/carrot.jpg"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the Food",
+                    "example": "A healthy vegetable"
+                  },
+                  "idTypeFood": {
+                    "type": "integer",
+                    "description": "ID of the TypeFood this Food belongs to",
+                    "example": 1
+                  }
+                },
+                "required": ["name", "idTypeFood"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/food/delete/{id}": {
+      "delete": {
+        "summary": "Delete Food by ID",
+        "description": "Deletes a specific Food based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Food to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Food not found"
+          }
+        }
+      }
+    },
+    "/food/update/{id}": {
+      "put": {
+        "summary": "Update Food by ID",
+        "description": "Updates the details of a specific Food based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the Food to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the Food",
+                    "example": "Carrot"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image URL of the Food",
+                    "example": "https://example.com/carrot.jpg"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the Food",
+                    "example": "A healthy vegetable"
+                  },
+                  "idTypeFood": {
+                    "type": "integer",
+                    "description": "ID of the TypeFood this Food belongs to",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Food not found"
+          }
+        }
+      }
+    },
+
+    "/canmypeteatrelation/readAll": {
+      "get": {
+        "summary": "Get all CanMyPetEatRelations",
+        "description": "Retrieves all CanMyPetEatRelations in the database.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "CanMyPetEatRelations not found"
+          }
+        }
+      }
+    },
+    "/canmypeteatrelation/readById/{id}": {
+      "get": {
+        "summary": "Get CanMyPetEatRelation by ID",
+        "description": "Retrieves a specific CanMyPetEatRelation based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the CanMyPetEatRelation to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "CanMyPetEatRelation not found"
+          }
+        }
+      }
+    },
+    "/canmypeteatrelation/create": {
+      "post": {
+        "summary": "Create CanMyPetEatRelation",
+        "description": "Creates a new CanMyPetEatRelation with the provided details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idFood": {
+                    "type": "integer",
+                    "description": "ID of the Food",
+                    "example": 1
+                  },
+                  "idPet": {
+                    "type": "integer",
+                    "description": "ID of the Pet",
+                    "example": 1
+                  },
+                  "isAllowed": {
+                    "type": "boolean",
+                    "description": "Whether the Pet can eat the Food",
+                    "example": true
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description about why is or not allowed",
+                    "example": "I think is correct... or no"
+                  }
+                },
+                "required": ["idFood", "idPet", "isAllowed", "description"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/canmypeteatrelation/delete/{id}": {
+      "delete": {
+        "summary": "Delete CanMyPetEatRelation by ID",
+        "description": "Deletes a specific CanMyPetEatRelation based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the CanMyPetEatRelation to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "CanMyPetEatRelation not found"
+          }
+        }
+      }
+    },
+    "/canmypeteatrelation/update/{id}": {
+      "put": {
+        "summary": "Update CanMyPetEatRelation by ID",
+        "description": "Updates the details of a specific CanMyPetEatRelation based on its ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the CanMyPetEatRelation to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idFood": {
+                    "type": "integer",
+                    "description": "ID of the Food",
+                    "example": 1
+                  },
+                  "idPet": {
+                    "type": "integer",
+                    "description": "ID of the Pet",
+                    "example": 1
+                  },
+                  "isAllowed": {
+                    "type": "boolean",
+                    "description": "Whether the Pet can eat the Food",
+                    "example": true
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description about why is or not allowed",
+                    "example": "I think is correct... or no"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "CanMyPetEatRelation not found"
+          }
+        }
+      }
+    }
+  }
+}

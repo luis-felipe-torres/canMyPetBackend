@@ -4,11 +4,21 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
-
+import swaggerUi from "swagger-ui-express";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Cargar el archivo Swagger JSON manualmente
+const swaggerDocument = JSON.parse(
+  fs.readFileSync(
+    path.resolve(__dirname, "./asserts/swagger/CanMyPetBackend.swagger.json"),
+    "utf8"
+  )
+);
 
 import indexRouter from "./routes/index.router.js";
 import typeFoodRouter from "./routes/typeFoods.router.js";
@@ -34,6 +44,7 @@ app.use("/typeFood", typeFoodRouter);
 app.use("/pet", petRouter);
 app.use("/food", foodRouter);
 app.use("/canmypeteatrelation", canMyPetEatRelationRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
